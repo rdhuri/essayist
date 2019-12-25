@@ -12,13 +12,14 @@ import io.ktor.response.respond
 fun Route.posts() {
 
     get<Posts> {
-        val allPosts = Database().getAllPosts()
+        val allPosts = Database.getAllPosts()
         call.respondText(allPosts)
     }
 
     post<Posts> {
+        print(call.toString())
         val post = call.receive<SinglePost>()
-        Database().addPost(post)
+        Database.addPost(post)
         call.respond(HttpStatusCode.OK, "Post saved successfully")
     }
 }
