@@ -52,6 +52,10 @@ jobs:
           paths:
             - ~/.gradle
           key: circleci-ktor-essayist-{{ checksum "build.gradle" }}
+      - run:
+          name: Reveal Git Secret
+          command: |
+            git-secret reveal -p 'R@hul123#'
       - run: gradle test -i
 
 
