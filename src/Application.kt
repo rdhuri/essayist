@@ -36,5 +36,5 @@ fun Application.main() {
 
 
 fun initDB() {
-    Database.connect("jdbc:mysql://localhost:3306/Posts?useSSL=false", driver = "com.mysql.jdbc.Driver", user = "Rahul", password = "Rahul123#")
+    Database.connect("jdbc:mysql://localhost:3306/Posts?allowPublicKeyRetrieval=true&useSSL=false", driver = "com.mysql.jdbc.Driver", user = "root", password = "Hitman@123#")
 }

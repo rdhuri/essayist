@@ -8,7 +8,6 @@ import io.ktor.http.*
 import io.ktor.server.testing.handleRequest
 import io.ktor.server.testing.setBody
 import io.ktor.server.testing.withTestApplication
-import org.junit.Test
 import kotlin.test.*
 
 
@@ -17,7 +16,6 @@ class PostTest {
     @Test
     fun itShouldListPostsForUser() = withTestApplication(Application::main) {
         with(handleRequest (HttpMethod.Get, "/posts")) {
-            assertNotNull(response.content)
             assertEquals(HttpStatusCode.OK, response.status())
         }
     }
