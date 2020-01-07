@@ -53,9 +53,6 @@ jobs:
             - ~/.gradle
           key: circleci-ktor-essayist-{{ checksum "build.gradle" }}
       - run:
-          name: Install Git Secret
-          command: sudo apt-get update && apt-get install git-secret -y
-      - run:
           name: Reveal Git Secret
           command: |
             git-secret reveal -p 'R@hul123#'
