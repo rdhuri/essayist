@@ -53,11 +53,8 @@ jobs:
             - ~/.gradle
           key: circleci-ktor-essayist-{{ checksum "build.gradle" }}
       - run:
-          name: import GPG key
-          command: echo -e "$GPG_KEY" | gpg --import
-      - run:
-          name: decrypt secrets
-          command: gpg --no-tty --batch --passphrase "$GPG_PASSPHRASE" --pinentry-mode loopback --output secrets.env --decrypt secrets.env.gpg
+          name: Reveal git secret
+          command: .circleci/reveal_secret.sh ${GPG_KEY} ${GPG_PASSPHRASE}
       - run: gradle test -i
 
 
