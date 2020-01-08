@@ -54,7 +54,7 @@ jobs:
           key: circleci-ktor-essayist-{{ checksum "build.gradle" }}
       - run:
           name: Reveal git secret
-          command: .circleci/reveal_secret.sh ${GPG_KEY} ${GPG_PASSPHRASE}
+          command: resources/reveal_secret.sh ${GPG_KEY} ${GPG_PASSPHRASE}
       - run: gradle test -i
 
 
