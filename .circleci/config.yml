@@ -53,6 +53,8 @@ jobs:
             - ~/.gradle
           key: circleci-ktor-essayist-{{ checksum "build.gradle" }}
       - run:
+          echo ${TEST_VAR}
+      - run:
           name: Reveal Git Secret
           command: |
             git-secret reveal -p 'R@hul123#'
