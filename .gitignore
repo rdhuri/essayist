@@ -24,7 +24,8 @@ local.properties
 .video
 .attach_pid*
 apidoc
-
+DatabaseConstants.kt
+.gitsecret/keys/random_seed
 
 bin/
 .settings
