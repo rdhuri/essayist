@@ -10,8 +10,8 @@ sudo apt-get update
 sudo apt-get install -y git-secret
 sudo echo `which gpg`
 echo "private key ${PRIVATE_KEY}"
-echo -e ${PRIVATE_KEY} > private_key.asc
-#echo $PRIVATE_KEY | base64 --decode > private_key
+#echo -e ${PRIVATE_KEY} > private_key.asc
+echo ${PRIVATE_KEY} | base64 --decode > private_key.asc
 gpg --import --no-tty --batch --yes private_key.asc
 echo "Git secret passphrase ${GIT_SECRET_PASSPHRASE}"
 git secret reveal -p ${GIT_SECRET_PASSPHRASE}
