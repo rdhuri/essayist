@@ -13,14 +13,14 @@ jobs:
             MYSQL_PORT: 3306
             MYSQL_DB: Posts
             MYSQL_USER: root
-            MYSQL_PASSWORD: Password
+            MYSQL_PASSWORD: Hitman@123#
             MYSQL_ROOT_HOST: "%"
 
       - image: circleci/mysql:5.6
         environment:
             # THESE 2 VARIABLES ARE REQUIRED!!!!
             MYSQL_ROOT_HOST: "%"
-            MYSQL_ROOT_PASSWORD: Password
+            MYSQL_ROOT_PASSWORD: Hitman@123#
 
 
     steps:
@@ -43,8 +43,8 @@ jobs:
       - run:
           name: Create database and table
           command: |
-            mysql -h 127.0.0.1 -uroot -pPassword -e "create database Posts"
-            mysql -h 127.0.0.1 -uroot -pPassword Posts < resources/post.sql
+            mysql -h 127.0.0.1 -uroot -pHitman@123# -e "create database Posts"
+            mysql -h 127.0.0.1 -uroot -pHitman@123# Posts < resources/post.sql
       - restore_cache:
           key: circleci-ktor-essayist-{{ checksum "build.gradle" }}
       - run: gradle dependencies
