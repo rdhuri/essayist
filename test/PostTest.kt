@@ -30,4 +30,40 @@ class PostTest {
         }
     }
 
+    @Test
+    fun itShouldVerifyInvalidPostIsNotAccepted() = withTestApplication(Application::main) {
+        with(handleRequest (HttpMethod.Post, "/posts"){
+            addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
+            setBody("{\"description\": \"Test description!!\"}")
+        }) {
+            assertEquals(HttpStatusCode.BadRequest, response.status())
+        }
+    }
+
+    @Test
+    fun itShouldFetchPostWithCorrectId() = withTestApplication(Application::main) {
+        with(handleRequest(HttpMethod.Get, "/posts/1")){
+            assertEquals(HttpStatusCode.OK, response.status())
+        }
+    }
+
+    @Test
+    fun itShouldUpdatePostWithCorrectId() = withTestApplication(Application::main) {
+        with(handleRequest (HttpMethod.Put, "/posts/1"){
+            addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
+            setBody(Gson().toJson(SinglePost(1, "update test", "updated test description")))
+        }) {
+            assertEquals(HttpStatusCode.OK, response.status())
+        }
+    }
+
+    @Test
+    fun itShouldVerifyInvalidPostIsNotAcceptedForUpdate() = withTestApplication(Application::main) {
+        with(handleRequest (HttpMethod.Put, "/posts/1"){
+            addHeader(HttpHeaders.ContentType, ContentType.Application.Json.toString())
+            setBody("{\"id\": 1,\"description\": \"Test description!!\"}")
+        }) {
+            assertEquals(HttpStatusCode.BadRequest, response.status())
+        }
+    }
 }
